@@ -20,7 +20,7 @@ class LoginController extends Controller
         if($res){
             if($res['user_pwd']==$pwd){
                 session(['name'=>$name]);
-                return redirect('index/index');
+                return redirect('index');
             }else{
                 echo '密码不正确请您重新填写,正在为您跳转。。。。。';
                 header("refresh:2,url='/");

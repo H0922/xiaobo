@@ -12,79 +12,133 @@
 <body>
         <div style="width: 70%;height: 500px;border: 1px solid black;float: left;" class="prism-player" id="player-con"></div>
         <div style="width: 29%;float:right;">
-                <input type="button" value="大家说" style="width:49%;height:40px">
-                <input type="button" value="粉丝贡献榜" style="width:49%;height:40px">
+                <input type="button" value="大家说" style="width:49%;height:40px" class="dajia">
+                <input type="button" value="粉丝贡献榜" style="width:49%;height:40px" class="fensi">
+            <div class="huan">
                 <div style="width: 99%; height: 600px; border: 1px solid black;overflow: auto" id="list"></div>
                 <input type="text" id="message">
                 <input type="button" value="发送" id='btn'>
-                <div id="bqlist" style="width: 400px;height: auto;"></div>
+            </div>
         </div>
         <div  style="width: 100px;height: 100px;float: right; margin:15px 15px 15px 15px" class="xh"><img style="width:99%;height:80px" src="./storage/liwu/xh.jpg" alt=""><p style="text-align:center">1积分</p></div>
         <div  style="width: 100px;height: 100px;float: right; margin:15px 15px 15px 15px" class="zs"><img style="width:99%;height:80px" src="./storage/liwu/zs.jpg" alt=""><p style="text-align:center">10积分</p></div>
         <div  style="width: 100px;height: 100px;float: right; margin:15px 15px 15px 15px" class="pc"><img style="width:99%;height:80px" src="./storage/liwu/pc.jpg" alt=""><p style="text-align:center">100积分</p></div>
         <div  style="width: 100px;height: 100px;float: right; margin:15px 15px 15px 15px" class="hj"><img style="width:99%;height:80px" src="./storage/liwu/hj.jpg" alt=""><p style="text-align:center">1000积分</p></div>
         <div  style="width: 100px;height: 100px;float: right; margin:15px 15px 15px 15px" class="fj"><img style="width:99%;height:80px" src="./storage/liwu/fj.jpg" alt=""><p style="text-align:center">10000积分</p></div>
+        <div  style="width: 100px;height: 100px;float: right; margin:15px 15px 15px 15px" class="tui"><input type="button" value="点击退出"></div>
 </body>
 <script>
+    //    粉丝贡献榜
+        $(document).on('click','.fensi',function(){
+            var _this=$(this);
+            var s = $('.huan');
+            $.ajax({
+                url:"{{url('index/fensi')}}",
+                type:"POST",
+                success:function(data){
+                    s.html(data);
+                }
+            })
+        })  
+        $(document).on('click','.dajia',function(){
+            var _this=$(this);
+            var s = $('.huan');
+            $.ajax({
+                url:"{{url('index/dajia')}}",
+                type:"POST",
+                success:function(data){
+                    s.html(data);
+                }
+            })
+        })                                                                                                                                                                                                                                                                                
     //鲜花
     $(document).on('click','.xh',function(){
-     var s  =   "{{session('name')}}";
-        if(s==''){
-           var b = window.confirm('请您先登录');
-          if(b == true){
-            location.href="{{url('login/index')}}";
-          }
-        }else{
-            console.log('登录过了');
-        }
+        var res = $(this).find('img').attr("src");
+        var con = "<img class='bqimg' src='" + res + "' style='width: 70px;height: 70px;'>";
+        var message = '{"type":"liwu","con":"' + con + '"}';
+        ws.send(message);
+        var name = "{{session('name')}}";
+        $.ajax({
+            url:"{{url('index/xh')}}",
+            type:"POST",
+            data:{
+                name:name,
+                jf:'1'
+            },
+            dataType:"JSON",
+        })
     })
     //砖石
     $(document).on('click','.zs',function(){
-     var s  =   "{{session('name')}}";
-        if(s==''){
-           var b = window.confirm('请您先登录');
-          if(b == true){
-            location.href="{{url('login/index')}}";
-          }
-        }else{
-            console.log('登录过了');
-        }
+        var res = $(this).find('img').attr("src");
+        console.log(res);
+        var con = "<img class='bqimg' src='" + res + "' style='width: 70px;height: 70px;'>";
+        var message = '{"type":"liwu","con":"' + con + '"}';
+        ws.send(message);
+        var name = "{{session('name')}}";
+        $.ajax({
+            url:"{{url('index/zs')}}",
+            type:"POST",
+            data:{
+                name:name,
+                jf:'10'
+            },
+            dataType:"JSON",
+        })
     })
     //跑车
     $(document).on('click','.pc',function(){
-     var s  =   "{{session('name')}}";
-        if(s==''){
-           var b = window.confirm('请您先登录');
-          if(b == true){
-            location.href="{{url('login/index')}}";
-          }
-        }else{
-            console.log('登录过了');
-        }
+        var res = $(this).find('img').attr("src");
+        console.log(res);
+        var con = "<img class='bqimg' src='" + res + "' style='width: 70px;height: 70px;'>";
+        var message = '{"type":"liwu","con":"' + con + '"}';
+        ws.send(message);
+        var name = "{{session('name')}}";
+        $.ajax({
+            url:"{{url('index/pc')}}",
+            type:"POST",
+            data:{
+                name:name,
+                jf:'100'
+            },
+            dataType:"JSON",
+        })
     })
     //火箭
     $(document).on('click','.hj',function(){
-     var s  =   "{{session('name')}}";
-        if(s==''){
-           var b = window.confirm('请您先登录');
-          if(b == true){
-            location.href="{{url('login/index')}}";
-          }
-        }else{
-            console.log('登录过了');
-        }
+        var res = $(this).find('img').attr("src");
+        console.log(res);
+        var con = "<img class='bqimg' src='" + res + "' style='width: 70px;height: 70px;'>";
+        var message = '{"type":"liwu","con":"' + con + '"}';
+        ws.send(message);
+        var name = "{{session('name')}}";
+        $.ajax({
+            url:"{{url('index/hj')}}",
+            type:"POST",
+            data:{
+                name:name,
+                jf:'1000'
+            },
+            dataType:"JSON",
+        })
     })
  //飞机
  $(document).on('click','.fj',function(){
-     var s  =   "{{session('name')}}";
-        if(s==''){
-           var b = window.confirm('请您先登录');
-          if(b == true){
-            location.href="{{url('login/index')}}";
-          }
-        }else{
-            console.log('登录过了');
-        }
+        var res = $(this).find('img').attr("src");
+        console.log(res);
+        var con = "<img class='bqimg' src='" + res + "' style='width: 70px;height: 70px;'>";
+        var message = '{"type":"liwu","con":"' + con + '"}';
+        ws.send(message);
+        var name = "{{session('name')}}";
+        $.ajax({
+            url:"{{url('index/fj')}}",
+            type:"POST",
+            data:{
+                name:name,
+                jf:'10000'
+            },
+            dataType:"JSON",
+        })
     })
 
 
@@ -109,9 +163,7 @@
         console.log("The player is created");
     });
     var username = "{{session('name')}}";
-    console.log(username);
-    return;
-    var ws = new WebSocket("ws://182.92.161.74:9502");
+    var ws = new WebSocket("ws://182.92.161.74:9501");
     ws.onopen = function() {
         var message = '{"type":"login","con":"' + username + '"}';
         ws.send(message);
@@ -128,38 +180,17 @@
             var con = "<div style='width: 300px; height: 100px;' alig='left'><p>来自" + data.username + "的消息</p><p></p><p>" + data.message + "</p></div>"
         } else if (data.is_me == 0 && data.type == 'loginout') {
             var con = "<p style='text-align:center'>系统提示：" + data.username + "离开了聊天室</p>";
+        }else if (data.is_me == 1 && data.type == 'liwu') {
+            var con = "<div style='width: 99%; height: 100px;' align='right'><p>您刷的礼物</p><p></p><p>" + data.message + "</p></div>"
+        } else if (data.is_me == 0 && data.type == 'liwu') {
+            var con = "<div style='width: 300px; height: 100px;' alig='left'><p>来自" + data.username + "刷的礼物</p><p></p><p>" + data.message + "</p></div>"
         }
         $("#list").append(con);
     }
     $(document).on('click', '#btn', function() {
-        var s  =   "{{session('name')}}";
-        if(s==''){
-           var b = window.confirm('请您先登录');
-          if(b == true){
-            location.href="{{url('login/index')}}";
-          }
-        }else{
         var con = $('#message').val();
         var message = '{"type":"message","con":"' + con + '"}';
         ws.send(message);
-        }
-      
-    });
-    $(document).on('click', '#bo', function() {
-        // alert(111);
-        $.ajax({
-            url: './bq.php',
-            dataType: 'json',
-            success: function(res) {
-                var img = '';
-                for (var i in res) {
-                    // console.log(res[i]);
-                    img += "<img class='bqimg' src='./bq/" + res[i] + "' style='width: 70px;height: 70px;'>";
-                }
-                //   console.log(img);
-                $('#bqlist').html(img);
-            }
-        })
     });
     $(document).on('click', '.bqimg', function() {
         var res = $(this).attr("src");

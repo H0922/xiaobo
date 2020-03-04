@@ -14,10 +14,21 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('index/index','Index\Indexcontroller@index');
+Route::get('index','Index\Indexcontroller@index');
 Route::get('/','Index\LoginController@loginlist');
 Route::get('reg/index','Index\LoginController@reglist');
 Route::post('reg/insert','Index\LoginController@regins');
 Route::post('login/insert','Index\LoginController@loginins');
+Route::post('index/xh','Index\Indexcontroller@xh');
+Route::post('index/zs','Index\Indexcontroller@zs');
+Route::post('index/hj','Index\Indexcontroller@hj');
+Route::post('index/fj','Index\Indexcontroller@fj');
+Route::post('index/pc','Index\Indexcontroller@pc');
+Route::post('index/fensi','Index\Indexcontroller@fensi');
+Route::post('index/dajia','Index\Indexcontroller@dajia');
+
+
+
+
 
 

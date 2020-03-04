@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                     <td><input type="submit" value="点击注册"></td>
-                    <td></td>
+                    <td></td>                   
                 </tr>
             </table>
         </form>
