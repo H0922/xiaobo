@@ -12,7 +12,7 @@
     <title>直播间</title>
 </head>
 <body>
-    
+        
         <div style="width: 70%;height: 500px;float: left;" class="prism-player" id="mainScreen"></div>
         <div style="width: 29%;float:right;">
                 <input type="button" value="大家说" style="width:49%;height:40px" class="dajia">
@@ -169,7 +169,7 @@
         console.log("The player is created");
     });
     var username = "{{session('name')}}";
-    var ws = new WebSocket("ws://182.92.161.74:9502");
+    var ws = new WebSocket("ws://182.92.161.74:9501");
     ws.onopen = function() {
         var message = '{"type":"login","con":"' + username + '"}';
         ws.send(message);
