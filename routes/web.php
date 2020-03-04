@@ -18,6 +18,6 @@ Route::get('index/index','Index\Indexcontroller@index');
 Route::get('/','Index\LoginController@loginlist');
 Route::get('reg/index','Index\LoginController@reglist');
 Route::post('reg/insert','Index\LoginController@regins');
-
+Route::post('login/insert','Index\LoginController@loginins');
 
 

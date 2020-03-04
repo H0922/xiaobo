@@ -108,7 +108,9 @@
     }, function(player) {
         console.log("The player is created");
     });
-    var username = 'xxxxx';
+    var username = "{{session('name')}}";
+    console.log(username);
+    return;
     var ws = new WebSocket("ws://182.92.161.74:9502");
     ws.onopen = function() {
         var message = '{"type":"login","con":"' + username + '"}';

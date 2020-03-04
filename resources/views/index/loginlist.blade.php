@@ -8,11 +8,22 @@
 </head>
 <body>
     <h3>请您登录</h3>
-    <h3>没有账号?点击<a href="">注册</a></h3>
-    <form action="" method="post">
+    <h3>没有账号?点击<a href="{{url('reg/index')}}">注册</a></h3>
+    <form action="{{url('login/insert')}}" method="post">
         @csrf
         <table border="1">
-            
+            <tr>
+                <td>用户名</td>
+                <td><input type="text" name="user_name" id=""></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input type="password" name="user_pwd" id=""></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="点击登录"></td>
+                <td></td>
+            </tr>
         </table>
     </form>
 </body>
