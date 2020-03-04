@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 
 class Indexcontroller extends Controller
 {
-        //页面方法
+        //??
         public function index(){
+            //session(['name'=>'zhangsan']);
             return view('index/index');
         }
 }
