@@ -97,4 +97,7 @@ class Indexcontroller extends Controller
         public function dajia(){
         return view('index/dajia');
         }
+        public function tan(){
+            return view('index/tanmu');
+        }
 }
