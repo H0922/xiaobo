@@ -155,7 +155,7 @@
     });
     var player = new Aliplayer({
         "id": "mainScreen",
-        "source": "rtmp://youke.bianaoao.top/s/ss?auth_key=1583344946-0-0-723b36c2fae6eefdac1c4b196e48e5bf",
+        "source": "rtmp://youke.bianaoao.top/aa/aaa?auth_key=1583380698-0-0-0232b67837e4042bbee2dd57b7e1f136",
         "width": "100%",
         "height": "500px",
         "autoplay": true,
